@@ -32,11 +32,17 @@ const Flashcard = () => {
     const back = () => {
         if (Page >= 1) {
             SetPage(Page-1)
+            SetVal("")
+            SetCorrect("")
         }
     }
 
     const forward = () => {
-        if (Page < paged.length - 1) { SetPage(Page+1) }
+        if (Page < paged.length - 1) { 
+            SetPage(Page+1) 
+            SetVal("")
+            SetCorrect("")
+        }
     }
 
     const rand = () => {
@@ -63,7 +69,7 @@ const Flashcard = () => {
     
         // Calculate the number of matching characters
         let matchingCount = 0;
-        for (let i = 0; i < answer.length; i++) {
+        for (let i = 0; i < guess.length; i++) {
             if (guess[i] === answer[i]) {
                 matchingCount++;
             }
@@ -78,8 +84,8 @@ const Flashcard = () => {
         }
         else {
         // Check if the similarity percentage is at least 90%
-        //changed to 75
-            return similarityPercentage >= 75;
+        //changed to 70
+            return similarityPercentage >= 70;
         }
     }
     
